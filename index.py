@@ -40,6 +40,8 @@ app.layout = html.Div(
 )
 def generate_question(n_clicks, user_answer):
 
+    print("n_clicks is {}".formatt(n_clicks))
+
     if n_clicks is None:
         return dash.no_update, dash.no_update, ""
 
