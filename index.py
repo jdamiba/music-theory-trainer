@@ -21,7 +21,7 @@ app.layout = html.Div(
             style={"whiteSpace": "pre-line"},
         ),
         html.Br(),
-        html.Div(id="question-div", children=questions[0][0]),
+        html.Div(id="question-div", children=questions[1][0]),
         dcc.Input(id="answer-input", type="text", value=""),
         html.Button(id="button", children="Submit"),
         html.Br(),
