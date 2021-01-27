@@ -522,4 +522,3 @@ questions = [
     # ["The seventh of a G# diminished chord?", ""],
 ]
 
-#questions = sorted(questions, key=lambda _: random.random())
