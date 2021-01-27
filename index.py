@@ -43,9 +43,9 @@ def generate_question(n_clicks, user_answer):
     if n_clicks is None:
         return dash.no_update, dash.no_update, ""
 
-    next_question = questions[n_clicks][0]
-    previous_question = questions[n_clicks - 1][0]
-    previous_answer = questions[n_clicks - 1][1]
+    next_question = questions[n_clicks+1][0]
+    previous_question = questions[n_clicks][0]
+    previous_answer = questions[n_clicks][1]
 
     if user_answer == previous_answer:
         return (
