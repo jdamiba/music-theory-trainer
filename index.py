@@ -7,7 +7,7 @@ from questions import questions
 
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 
-questions = sorted(questions, key=lambda _: random.random())
+random_questions = sorted(questions, key=lambda _: random.random())
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
@@ -23,7 +23,7 @@ app.layout = html.Div(
             style={"whiteSpace": "pre-line"},
         ),
         html.Br(),
-        html.Div(id="question-div", children=questions[0][0]),
+        html.Div(id="question-div", children=random_questions[0][0]),
         dcc.Input(id="answer-input", type="text", value=""),
         html.Button(id="button", children="Submit"),
         html.Br(),
@@ -47,9 +47,9 @@ def generate_question(n_clicks, user_answer):
     if n_clicks is None:
         return dash.no_update, dash.no_update, ""
 
-    next_question = questions[n_clicks][0]
-    previous_question = questions[n_clicks - 1][0]
-    previous_answer = questions[n_clicks - 1][1]
+    next_question = random_questions[n_clicks][0]
+    previous_question = random_questions[n_clicks - 1][0]
+    previous_answer = random_questions[n_clicks - 1][1]
 
     print("next question is {}".format(next_question))
     print("previous question is {}".format(previous_question))
