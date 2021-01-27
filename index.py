@@ -30,17 +30,40 @@ app.layout = html.Div(
     ]
 )
 
+
 @app.callback(
-    Output('question-div', 'children'),
-    Output('output', 'children'),
-    Input('button', 'n_clicks'),
-    Input('answer-input', 'value')
+    Output("question-div", "children"),
+    Output("output", "children"),
+    Output("answer-input", "value"),
+    Input("button", "n_clicks"),
+    State("answer-input", "value"),
 )
 def generate_question(n_clicks, user_answer):
+
     if n_clicks is None:
-        return dash.no_update, dash.no_update
+        return dash.no_update, dash.no_update, ""
 
-    return questions[n_clicks][0], "Correct!" if user_answer == questions[n_clicks - 1][1] else "incorrect! The correct answer to {} is {}".format(questions[n_clicks - 1][0], questions[n_clicks - 1][1])
+    next_question = questions[n_clicks][0]
+    previous_question = questions[n_clicks - 1][0]
+    previous_answer = questions[n_clicks - 1][1]
 
-if __name__ == '__main__':
+    if user_answer == previous_answer:
+        return (
+            next_question,
+            'Correct!\n {} is the correct answer to the question: "{}"'.format(
+                user_answer, previous_question
+            ),
+            "",
+        )
+    else:
+        return (
+            next_question,
+            'Incorrect! {} is the correct answer to the question: "{}".\n You answered {}.'.format(
+                previous_answer, previous_question, user_answer
+            ),
+            "",
+        )
+
+
+if __name__ == "__main__":
     app.run_server(debug=True)
