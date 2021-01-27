@@ -1,6 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import random
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from questions import questions

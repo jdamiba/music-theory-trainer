@@ -1,5 +1,3 @@
-import random
-
 questions = [
     ["What is the 2nd degree of the C major scale?", "D"],
     ["What is the 3rd degree of the C major scale?", "E"],
@@ -521,4 +519,3 @@ questions = [
     # ["The seventh of a G diminished chord?", ""],
     # ["The seventh of a G# diminished chord?", ""],
 ]
-
